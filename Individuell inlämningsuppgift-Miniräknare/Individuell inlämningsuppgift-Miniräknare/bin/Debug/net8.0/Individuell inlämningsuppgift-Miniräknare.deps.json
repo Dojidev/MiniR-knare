@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Individuell inlämningsuppgift-Miniräknare/1.0.0": {
+        "runtime": {
+          "Individuell inlämningsuppgift-Miniräknare.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Individuell inlämningsuppgift-Miniräknare/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

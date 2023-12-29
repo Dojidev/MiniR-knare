@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Individuell inlämningsuppgift-Miniräknare", "Individuell inlämningsuppgift-Miniräknare\Individuell inlämningsuppgift-Miniräknare.csproj", "{B99B1372-0275-4776-93E1-73A773C7861C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B99B1372-0275-4776-93E1-73A773C7861C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B99B1372-0275-4776-93E1-73A773C7861C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B99B1372-0275-4776-93E1-73A773C7861C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B99B1372-0275-4776-93E1-73A773C7861C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C130F9E1-C757-4885-9B8D-B9172195A215}
+	EndGlobalSection
+EndGlobal
