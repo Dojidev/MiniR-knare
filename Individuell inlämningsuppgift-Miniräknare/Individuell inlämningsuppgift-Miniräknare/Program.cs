@@ -86,7 +86,7 @@ namespace Calculator_ConsoleApp
                     Console.WriteLine();
 
                     Console.WriteLine("Do you want to perform another calculation? " +
-                        "(Press any key to continu or 'N' to exit): ");
+                        "(Press any key to continue or 'N' to exit): ");
                     string continueInput = Console.ReadLine().ToLower();
                     if (continueInput == "n")
                     {
