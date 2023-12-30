@@ -1,4 +1,4 @@
-﻿
+
 
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Diagnostics;
@@ -66,80 +66,59 @@ namespace Calculator_ConsoleApp
             Console.Clear();
             while (true)
             {
-                Console.Clear();
-                while (true)
+                
+
+                string expression = CheckForTypedExpression("Enter a mathematical expression (Exp: 20+20): ");
+
+                string[] elements = expression.Split(new char[] { '+', '-', '*', '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+                if (elements.Length == 2 &&
+                    decimal.TryParse(elements[0], out decimal num1) &&
+                    decimal.TryParse(elements[1], out decimal num2))
                 {
-                    decimal firstNumber = CheckForValidNumber("Enter the first number: ");
-                    string operatorSymbol = CheckForValidOperator();
-                    decimal secondNumber = CheckForValidNumber("Enter the second number: ");
+                    char operatorSymbol = expression[elements[0].Length];
+                    decimal result = PerformCalculation(num1, num2, operatorSymbol);
+                    resultHistory.Add(result);
 
-                    decimal result = PerformCalculation(firstNumber, secondNumber, operatorSymbol);
-
-
-                    // Add result to the list
-                    resultHistory.Add(result); // adds result to resultHistory 
-                    
-
-                    // Show the result
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine($" {firstNumber} {operatorSymbol}" +
-                        $" {secondNumber} = {result}");
-                    Console.WriteLine("------------------------");
+                    Console.WriteLine($" {num1} {operatorSymbol} {num2} = {result}");
                     Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine();
 
                     Console.WriteLine("Do you want to perform another calculation? " +
-                        "(Press 'Y' to continue, any other key to exit): ");
+                        "(Press any key to continu or 'N' to exit): ");
                     string continueInput = Console.ReadLine().ToLower();
-                    if (continueInput != "y")
+                    if (continueInput == "n")
                     {
                         return;
                     }
-
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    HandleInputError("Invalid expression format or numbers.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                   
                 }
             }
         }
-        
 
-        //----------------------- Method of validaion of number-----------------------------//
-        static decimal CheckForValidNumber(string message)
+
+        //----------------------------- Handles Error ---------------------------------------------//
+        static string CheckForTypedExpression(string message)
         {
             while (true)
             {
                 Console.Write(message);
-                if (!decimal.TryParse(Console.ReadLine(), out decimal number))
-                {
-                    HandleInputError("Invalid input! Please enter a valid number.");
-                    continue;
-                }
-
-                return number;
+                string expression = Console.ReadLine();
+                return expression;
             }
         }
 
-        //------------------------ Method of getting Operator ------------------------//
-        static string CheckForValidOperator()
-        {
-            while (true)
-            {
-                Console.Write($"Enter the operator (+, -, *, /): ");
-                string operatorSymbol = Console.ReadLine().Trim();
-                    if (!CorrectOperator(operatorSymbol))
-                    {
-                        HandleInputError("Invalid operator!" +
-                            " Please enter a valid operator (+, -, *, /).");
-                        continue;
-                    }
-
-                    return operatorSymbol;
-                }
-        }
-        //----------------------Checks for correct Operator  ---------------------------------//
-        static bool CorrectOperator(string operatorSymbol)  // this method is called when the user enters in the if statment check if it is correct operator. 
-                                                              
-        {
-            return operatorSymbol == "+" || operatorSymbol == "-" || operatorSymbol == "*" || operatorSymbol == "/";
-        }
-
+        
+     
+     
         //----------------------------- Handles Error ---------------------------------------------//
         static void HandleInputError(string errorMessage)
             {
@@ -158,7 +137,7 @@ namespace Calculator_ConsoleApp
             if (resultHistory.Count != 0) //loops and shows the previus result
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("You're Results are:");
+                Console.WriteLine("Your Results are:");
                 for (int i = 0; i < resultHistory.Count; i++)
                 {
                     Console.WriteLine($"{i + 1}. {resultHistory[i]}");
@@ -176,20 +155,20 @@ namespace Calculator_ConsoleApp
         }
         //-------------------------------- Perform Calculation -----------------------------------//
         static decimal PerformCalculation
-            (decimal firstNumber, decimal secondNumber, string operatorSymbol)
+            (decimal num1, decimal num2, char operatorSymbol)
         {
             switch (operatorSymbol)
             {
-                case "+":
-                    return firstNumber + secondNumber;
-                case "-":
-                    return firstNumber - secondNumber;
-                case "*":
-                    return firstNumber * secondNumber;
-                case "/":
-                    if (secondNumber != 0)
+                case '+':
+                    return num1 + num2;
+                case '-':
+                    return num1 - num2;
+                case '*':
+                    return num1 * num2;
+                case '/':
+                    if (num2 != 0)
                     {
-                        return firstNumber / secondNumber;
+                        return num1 / num2;
                     }
                     else
                     {
